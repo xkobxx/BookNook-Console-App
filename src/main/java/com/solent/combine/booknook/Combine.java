@@ -8,40 +8,34 @@ import java.util.Scanner;
  *
  * @author David Mensah
  */
+/**
+ * Central coordination class for the BookNook application that integrates
+ * functionalities from multiple group components. This class serves as the main
+ * entry point and orchestrates the interaction between different group modules.
+ *
+ * The class manages: - Integration of services from Groups A, B, and C -
+ * Unified menu system for accessing group-specific functionalities -
+ * Centralized navigation and control flow - Consistent user interface
+ * presentation
+ *
+ */
 public class Combine {
 
-    /**
-     *
-     */
+    // Service instances for Group A functionality
     public static com.solent.booknook.ga.BookService ga_bookService = new com.solent.booknook.ga.BookService();
-
-    /**
-     *
-     */
     public static com.solent.booknook.ga.ui.GuiController ga_gui = new com.solent.booknook.ga.ui.GuiController();
 
-    /**
-     *
-     */
+    // Service instances for Group B functionality
     public static com.solent.booknook.gb.BookService gb_bookService = new com.solent.booknook.gb.BookService();
-
-    /**
-     *
-     */
     public static com.solent.booknook.gb.ui.GuiController gb_gui = new com.solent.booknook.gb.ui.GuiController();
 
-    /**
-     *
-     */
+    // Service instances for Group C functionality
     public static com.solent.booknook.gc.BookService gc_bookService = new com.solent.booknook.gc.BookService();
-
-    /**
-     *
-     */
     public static com.solent.booknook.gc.ui.GuiController gc_gui = new com.solent.booknook.gc.ui.GuiController();
 
     /**
-     * Display simple information message when user is at main screen.
+     * Displays informational message about the combined group functionality.
+     * Provides context about the integration approach and system architecture.
      */
     public static void displayInformation() {
         AsciiTable asciiTable = new AsciiTable();
@@ -56,7 +50,8 @@ public class Combine {
     }
 
     /**
-     * Creates main menu.
+     * Creates and displays the main menu interface. Presents options for
+     * accessing different group functionalities and system-wide operations.
      */
     public static void createStartMenu() {
         Combine.displayInformation();
@@ -77,8 +72,9 @@ public class Combine {
     }
 
     /**
+     * Displays formatted exit message when user terminates the application.
      *
-     * @param message
+     * @param message The exit message to display
      */
     public void exitMessage(String message) {
         AsciiTable asciiTable = new AsciiTable();
@@ -91,35 +87,40 @@ public class Combine {
     }
 
     /**
-     * Shows Group A Tasks.
+     * Initializes and displays Group A specific functionality interface.
+     * Delegates control to Group A's GUI controller.
      */
     public void displayMenuGroupA() {
         ga_gui.appStart("Welcome to Booknook Group A Tasks");
     }
 
     /**
-     * Shows Group B Tasks.
+     * Initializes and displays Group B specific functionality interface.
+     * Delegates control to Group B's GUI controller.
      */
     public void displayMenuGroupB() {
         gb_gui.appStart("Welcome to Booknook Group B Tasks");
     }
 
     /**
-     * Shows Group C Tasks.
+     * Initializes and displays Group C specific functionality interface.
+     * Delegates control to Group C's GUI controller.
      */
     public void displayMenuGroupC() {
         gc_gui.appStart("Welcome to Booknook Group C Tasks");
-
     }
 
     /**
-     * Start Console Menu and Loop through it until user choose to exit the
+     * Main control loop for the application. Manages the primary menu system
+     * and handles user input for navigation between different group
+     * functionalities. Continues processing until user chooses to exit the
      * system.
+     *
+     * Implements input validation and error handling for menu selection.
      */
     public void processMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean action = true;
-        //String getKey="";
 
         while (action) {
             ga_gui.clearScreen();
@@ -127,7 +128,6 @@ public class Combine {
             int getKey = 0;
             String key = scanner.next();
             try {
-                //getKey = (key.toUpperCase());
                 getKey = Integer.parseInt(key);
                 switch (getKey) {
                     case 1:
@@ -140,19 +140,15 @@ public class Combine {
                         this.displayMenuGroupC();
                         break;
                     case 4:
-                        this.exitMessage("Thank you for using BookNook.");
+                        this.exitMessage("Thank you for using BookNook Console App.");
                         System.exit(0);
                         action = false;
                     default:
-
                         break;
                 }
-
             } catch (Exception e) {
-                System.out.println("Please Enter numbers only");
+                System.out.println("Please Input numbers only");
             }
         }
-
     }
-
 }
