@@ -41,9 +41,9 @@ public class Combine {
     public static void displayInformation() {
         AsciiTable asciiTable = new AsciiTable();
         asciiTable.addRule();
-        asciiTable.addRow(" Running groups combine work.");
-        asciiTable.addRow(" We simplified the process by adding Individual Groups jar files.");
-        asciiTable.addRow(" We only need to modify group work a few times.");
+        asciiTable.addRow(" ****** Running Groups Combined Work. ******** ");
+        asciiTable.addRow(" Individual group members jar files were added ");
+        asciiTable.addRow(" We modified the code a few times.");
         asciiTable.addRule();
         asciiTable.setTextAlignment(TextAlignment.JUSTIFIED_LEFT);
         String render = asciiTable.render(60);
