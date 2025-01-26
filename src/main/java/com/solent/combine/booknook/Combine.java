@@ -34,6 +34,7 @@ public class Combine {
     public static com.solent.booknook.gc.ui.GuiController gc_gui = new com.solent.booknook.gc.ui.GuiController();
 
     /**
+     * As the group leader, I member A created this display table with ASCII
      * Displays informational message about the combined group functionality.
      * Provides context about the integration approach and system architecture.
      */
@@ -50,8 +51,9 @@ public class Combine {
     }
 
     /**
-     * Creates and displays the main menu interface. Presents options for
-     * accessing different group functionalities and system-wide operations.
+     * Member B created the start menu: Creates and displays the main menu
+     * interface. Presents options for accessing different group functionalities
+     * and system-wide operations.
      */
     public static void createStartMenu() {
         Combine.displayInformation();
@@ -72,7 +74,8 @@ public class Combine {
     }
 
     /**
-     * Displays formatted exit message when user terminates the application.
+     * As Group member C, I created this exit menu which: Displays formatted
+     * exit message when user terminates the application.
      *
      * @param message The exit message to display
      */
