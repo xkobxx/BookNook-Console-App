@@ -95,16 +95,16 @@ public class Combine {
     }
 
     /**
-     * Initializes and displays Group B specific functionality interface.
-     * Delegates control to Group B's GUI controller.
+     * Group Member B Initializes and displays Group B specific functionality
+     * interface. Delegates control to Group B's GUI controller.
      */
     public void displayMenuGroupB() {
         gb_gui.appStart("Welcome to Booknook Group B Tasks");
     }
 
     /**
-     * Initializes and displays Group C specific functionality interface.
-     * Delegates control to Group C's GUI controller.
+     * Group Member C Initializes and displays Group C specific functionality
+     * interface. Delegates control to Group C's GUI controller.
      */
     public void displayMenuGroupC() {
         gc_gui.appStart("Welcome to Booknook Group C Tasks");
