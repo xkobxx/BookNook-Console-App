@@ -3,6 +3,7 @@ package com.solent.combine.booknook;
 import de.vandermeer.asciitable.AsciiTable;
 import de.vandermeer.skb.interfaces.transformers.textformat.TextAlignment;
 import java.util.Scanner;
+import com.mycompany.bkbar.BookNookApplication;
 
 /**
  *
@@ -38,6 +39,9 @@ public class Combine {
      * Displays informational message about the combined group functionality.
      * Provides context about the integration approach and system architecture.
      */
+    // BookNook Integration instance
+    private static BookNookIntegration bookNookIntegration;
+
     public static void displayInformation() {
         AsciiTable asciiTable = new AsciiTable();
         asciiTable.addRule();
@@ -59,14 +63,14 @@ public class Combine {
         Combine.displayInformation();
         AsciiTable asciiTable = new AsciiTable();
         asciiTable.addRule();
-        asciiTable.addRow("  Select Group Tasks");
+        asciiTable.addRow(" Select Group Tasks");
         asciiTable.addRule();
-        asciiTable.addRow("[1]        Group Member A Tasks");
-        asciiTable.addRow("[2]        Group Member B Tasks");
-        asciiTable.addRow("[3]        Group Member C Tasks");
-        asciiTable.addRow("[4]        Exit");
+        asciiTable.addRow("[1] Group Member A Tasks");
+        asciiTable.addRow("[2] Group Member B Tasks");
+        asciiTable.addRow("[3] Group Member C Tasks");
+        asciiTable.addRow("[4] Exit");
         asciiTable.addRule();
-        asciiTable.addRow("  Select from the options [1... 4]");
+        asciiTable.addRow(" Select from the options [1... 4]");
         asciiTable.addRule();
         asciiTable.setTextAlignment(TextAlignment.JUSTIFIED_LEFT);
         String render = asciiTable.render(60);
@@ -94,36 +98,21 @@ public class Combine {
      * Delegates control to Group A's GUI controller.
      */
     public void displayMenuGroupA() {
-        ga_gui.appStart("Welcome to Booknook Group A Tasks");
+        ga_gui.appStart("Welcome to Booknook Group Member A Tasks");
     }
 
-    /**
-     * Group Member B Initializes and displays Group B specific functionality
-     * interface. Delegates control to Group B's GUI controller.
-     */
     public void displayMenuGroupB() {
-        gb_gui.appStart("Welcome to Booknook Group B Tasks");
+        gb_gui.appStart("Welcome to Booknook Group Member B Tasks");
     }
 
-    /**
-     * Group Member C Initializes and displays Group C specific functionality
-     * interface. Delegates control to Group C's GUI controller.
-     */
     public void displayMenuGroupC() {
-        gc_gui.appStart("Welcome to Booknook Group C Tasks");
+        gc_gui.appStart("Welcome to Booknook Group Member C Tasks");
     }
 
-    /**
-     * Main control loop for the application. Manages the primary menu system
-     * and handles user input for navigation between different group
-     * functionalities. Continues processing until user chooses to exit the
-     * system.
-     *
-     * Implements input validation and error handling for menu selection.
-     */
     public void processMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean action = true;
+        bookNookIntegration = new BookNookIntegration();
 
         while (action) {
             ga_gui.clearScreen();
@@ -137,7 +126,7 @@ public class Combine {
                         this.displayMenuGroupA();
                         break;
                     case 2:
-                        this.displayMenuGroupB();
+                        bookNookIntegration.startBookNookApplication();
                         break;
                     case 3:
                         this.displayMenuGroupC();
@@ -153,5 +142,19 @@ public class Combine {
                 System.out.println("Please Input numbers only");
             }
         }
+    }
+
+    public static void main(String[] args) {
+        Combine combine = new Combine();
+        combine.processMenu();
+    }
+}
+
+class BookNookIntegration {
+
+    public void startBookNookApplication() {
+        System.out.println("\nStarting BookNook Application...\n");
+        BookNookApplication app = new BookNookApplication();
+        app.main(new String[0]);  // Call the public main method instead
     }
 }
